@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,27 +23,15 @@ public bool CSharp; // Книга о C#
 namespace Bookstore
 {
     class Program
-    {
-        class Bank<T>
-        {
-            T[] clients;
-
-            public Bank()
-            {
-            }
-            public Bank(T[] _clients)
-            {
-                this.clients = _clients;
-            }
-            public override string ToString()
-            {
-                return T.ToString();
-            }
-        }
+    {        
+        
         static void Main(string[] args)
         {
             Book st1 = new Book("7е издание С#","Э.Троелсен",2525,true);
             Book st2 = new Book("CLR via C#", "Джеффри Рихтер", 499, true);
+            Book st3 = new Book("Гений", "Теодор Драйзер", 196, false);
+            Book st4 = new Book("Остров сокровищ", "Роберт Стивенсон", 551, false);
+           
             //Console.WriteLine(st1);
             //Console.WriteLine(st1.Author);
 
@@ -50,12 +39,17 @@ namespace Bookstore
 
 
 
-           // Bank<int> bank = new Bank<int>(new int[] { 1, 2, 4, 5, 6 });
-        Bank<string> bank2 = new Bank<string>(new string[] { "13433", "342454", "21432" });
-            Bank<Book> bank = new Bank<Book>(new Book[] { st1,st2});
-            Console.WriteLine(bank);
-            Console.WriteLine(bank2);
-            Console.ReadLine();
+            // Bank<int> bank = new Bank<int>(new int[] { 1, 2, 4, 5, 6 });
+            //Book [] bank2 = new  Book [] { st1,st2,st1 };
+            //bank2.Last(new Book);           
+
+            //foreach (var el in bank2) Console.WriteLine(el);
+            Bookstore<Book> bank2 = new Bookstore<Book>(new Book[] { st1, st2, st1 });
+            foreach (var el in bank2) Console.WriteLine(el);
+            
+
+            Console.ReadKey();
+            bank2.AddBook(st1);
 
     }
 }

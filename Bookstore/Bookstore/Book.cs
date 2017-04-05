@@ -20,6 +20,8 @@ namespace Bookstore
             this.Price = price;
             this.CSharp = cSharp;
         }
+              
+
         public override string ToString()
         {
             return $"Название книги : {Title};\nАвтор : {Author};\nЦена: {Price};\nМетка С# : {CSharp}\n_________ ";
