@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bookstore
 {
-  public class Book
+  public class Book:IComparable
     {
         public string Title; // Название.
         public string Author; // Автор.
@@ -25,6 +25,23 @@ namespace Bookstore
         public override string ToString()
         {
             return $"Название книги : {Title};\nАвтор : {Author};\nЦена: {Price};\nМетка С# : {CSharp}\n_________ ";
+        }
+
+        public int CompareTo(object obj)
+        {
+            Book book = obj as Book;
+            if (book!= null && book.CSharp = true)
+            {
+                if (this.Price < book.Price)
+                    return -1;
+                else if (this.Price > book.Price)
+                    return 1;
+                else return 0;
+            }
+            else
+            {
+                throw new Exception("Что-то пошло не так внутри IComparable"); 
+            }
         }
     }
 }

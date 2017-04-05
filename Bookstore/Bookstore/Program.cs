@@ -18,7 +18,8 @@ public bool CSharp; // Книга о C#
 2) вычислить и отобразить общую стоимость всех книг о С# в консоли
 3) вычислить и отобразить среднюю стоимость книг о С# в консоли.
 Расчет общей и средней стоимости реализовать в отдельном классе.
-Интерфейс для реализации сортировки IComparable.*/
+Интерфейс для реализации сортировки IComparable.
+*/
 
 namespace Bookstore
 {
@@ -27,30 +28,45 @@ namespace Bookstore
         
         static void Main(string[] args)
         {
+            #region Инициализируем книжки
             Book st1 = new Book("7е издание С#","Э.Троелсен",2525,true);
             Book st2 = new Book("CLR via C#", "Джеффри Рихтер", 499, true);
             Book st3 = new Book("Гений", "Теодор Драйзер", 196, false);
             Book st4 = new Book("Остров сокровищ", "Роберт Стивенсон", 551, false);
-           
+            #endregion
             //Console.WriteLine(st1);
             //Console.WriteLine(st1.Author);
+            #region создание списка книг и метода Add
+            List<Book> allbooks = new List<Book>();
+            Console.WriteLine("Выводим содержимое списка книг 1й раз:\n");
+            foreach (var el in allbooks) Console.WriteLine(el);
+            Console.WriteLine(allbooks.Capacity);
+            allbooks.Add(st1);
+            allbooks.Add(st3);
+            Console.WriteLine("Выводим содержимое списка, дополненного книгами:\n");
+            foreach (var el in allbooks) Console.WriteLine(el);
+            Console.WriteLine(allbooks.Capacity);
+            Bookstore<Book> bankbooks = new Bookstore<Book>(allbooks);
+            bankbooks.AddBook<Book>(new Book("Остров сокровищ", "Роберт Стивенсон", 551, false));
+            bankbooks.AddBook<Book>(st2);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Проверка добавления методом AddBook:\n");
+            foreach (var el in bankbooks) Console.WriteLine(el);
+            Console.ForegroundColor = ConsoleColor.White;
+            #endregion
 
-            //Console.ReadKey();
+            #region Реализация сортировки
+            //Array.Sort(bankbooks);
+            Console.WriteLine("Вывод результата сортировки:");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            foreach (var el in bankbooks) Console.WriteLine(el);
+            Console.ForegroundColor = ConsoleColor.White;
+            #endregion
 
 
-
-            // Bank<int> bank = new Bank<int>(new int[] { 1, 2, 4, 5, 6 });
-            //Book [] bank2 = new  Book [] { st1,st2,st1 };
-            //bank2.Last(new Book);           
-
-            //foreach (var el in bank2) Console.WriteLine(el);
-            Bookstore<Book> bank2 = new Bookstore<Book>(new Book[] { st1, st2, st1 });
-            foreach (var el in bank2) Console.WriteLine(el);
-            
 
             Console.ReadKey();
-            bank2.AddBook(st1);
-
+            
     }
 }
 }

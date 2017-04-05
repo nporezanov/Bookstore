@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 namespace Bookstore
 {
 
-    public class Bookstore<T> : IEnumerable, IEnumerator
+    public class Bookstore<T> : IEnumerable, IEnumerator, IComparable
     {      
-            T[] library;
+            List<T> library;
             int index = -1;
-        int ind1 = 0;   
 
         public Bookstore()
         {
         }
-        public Bookstore(T[] _library)
+        public Bookstore(List<T> _library)
         {
+            this.library = new List<T>();
             this.library = _library;
         }
         public IEnumerator GetEnumerator()
@@ -29,13 +29,14 @@ namespace Bookstore
             {
                 get
                 {
-                    return library[index];
+
+                return library[index];
                 }
             }
 
             public bool MoveNext()
             {
-                if (index == library.Length - 1)
+                if (index == library.Capacity - 1)
                 { Reset(); return false; }
                 index++;
                 return true;
@@ -45,14 +46,18 @@ namespace Bookstore
             {
                 index = -1;
             }
-        public void AddBook(T t)
+        public void AddBook<X>(T book) where X:Book
         {
-            if (ind1==library.Length)
-            {
-                library.a= library.Length + 1;
-            }
-            library[ind1] = t;
-            ind1++;
+            this.library.Add(book);
+        }
+
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
+        }
+        public void ProcessBooks(ProcessBookDelegate processBook)
+        {
+
         }
     }
 }
