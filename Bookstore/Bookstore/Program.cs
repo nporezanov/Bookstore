@@ -37,29 +37,30 @@ namespace Bookstore
             //Console.WriteLine(st1);
             //Console.WriteLine(st1.Author);
             #region создание списка книг и метода Add
-            List<Book> allbooks = new List<Book>();
-            Console.WriteLine("Выводим содержимое списка книг 1й раз:\n");
-            foreach (var el in allbooks) Console.WriteLine(el);
-            Console.WriteLine(allbooks.Capacity);
-            allbooks.Add(st1);
-            allbooks.Add(st3);
-            Console.WriteLine("Выводим содержимое списка, дополненного книгами:\n");
-            foreach (var el in allbooks) Console.WriteLine(el);
-            Console.WriteLine(allbooks.Capacity);
-            Bookstore<Book> bankbooks = new Bookstore<Book>(allbooks);
-            bankbooks.AddBook<Book>(new Book("Остров сокровищ", "Роберт Стивенсон", 551, false));
-            bankbooks.AddBook<Book>(st2);
+            Book[] bang = new []  { st4, st3, st2, st1 };
+            //List<Book> allbooks = new List<Book>();
+            //Console.WriteLine("Выводим содержимое списка книг 1й раз:\n");
+            //foreach (var el in allbooks) Console.WriteLine(el);
+            //Console.WriteLine(allbooks.Capacity);
+            //allbooks.Add(st1);
+            //allbooks.Add(st3);
+            //Console.WriteLine("Выводим содержимое списка, дополненного книгами:\n");
+            //foreach (var el in allbooks) Console.WriteLine(el);
+            //Console.WriteLine(allbooks.Capacity);
+            //Bookstore<Book> bankbooks = new Bookstore<Book>(allbooks);
+            //bankbooks.AddBook<Book>(new Book("Остров сокровищ", "Роберт Стивенсон", 551, false));
+            //bankbooks.AddBook<Book>(st2);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Проверка добавления методом AddBook:\n");
-            foreach (var el in bankbooks) Console.WriteLine(el);
+            //Console.WriteLine("Проверка добавления методом AddBook:\n");
+            foreach (var el in bang) Console.WriteLine(el);
             Console.ForegroundColor = ConsoleColor.White;
             #endregion
 
             #region Реализация сортировки
-            //Array.Sort(bankbooks);
+            Array.Sort(bang);
             Console.WriteLine("Вывод результата сортировки:");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            foreach (var el in bankbooks) Console.WriteLine(el);
+            foreach (var el in bang) Console.WriteLine(el);
             Console.ForegroundColor = ConsoleColor.White;
             #endregion
 

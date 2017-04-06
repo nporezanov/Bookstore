@@ -30,11 +30,11 @@ namespace Bookstore
         public int CompareTo(object obj)
         {
             Book book = obj as Book;
-            if (book!= null && book.CSharp = true)
+            if (book!= null) //&& book.CSharp = true - еще впихнуть условие чтобы только по С# фильтр.
             {
-                if (this.Price < book.Price)
+                if (this.Price > book.Price)
                     return -1;
-                else if (this.Price > book.Price)
+                else if (this.Price < book.Price)
                     return 1;
                 else return 0;
             }
